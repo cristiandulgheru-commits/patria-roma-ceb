@@ -30,25 +30,248 @@
         margin: 0;
         font-family: "DM Sans", system-ui, sans-serif;
         background: var(--bg);
-        background-image:
-          radial-gradient(ellipse 120% 80% at 50% -20%, rgba(74, 158, 255, 0.12), transparent 55%),
-          radial-gradient(ellipse 80% 50% at 100% 50%, rgba(232, 197, 71, 0.06), transparent 45%),
-          repeating-linear-gradient(
-            -12deg,
-            transparent,
-            transparent 40px,
-            rgba(45, 63, 85, 0.12) 40px,
-            rgba(45, 63, 85, 0.12) 41px
-          );
         color: var(--text);
         font-size: 1.18rem;
         line-height: 1.45;
         -webkit-font-smoothing: antialiased;
       }
+      .page-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 40rem) minmax(0, 1fr);
+        min-height: 100vh;
+        align-items: start;
+        background-image:
+          radial-gradient(ellipse 100% 70% at 50% -15%, rgba(74, 158, 255, 0.1), transparent 50%),
+          repeating-linear-gradient(
+            -12deg,
+            transparent,
+            transparent 40px,
+            rgba(45, 63, 85, 0.1) 40px,
+            rgba(45, 63, 85, 0.1) 41px
+          );
+      }
+      .side {
+        position: sticky;
+        top: 0;
+        align-self: start;
+        min-height: 100vh;
+        padding: 1.25rem 0.85rem 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        overflow: hidden;
+      }
+      .side-left {
+        background: linear-gradient(135deg, rgba(232, 197, 71, 0.12) 0%, transparent 55%),
+          linear-gradient(90deg, rgba(18, 25, 34, 0.97) 0%, rgba(12, 16, 21, 0.4) 100%);
+        border-right: 1px solid var(--line);
+      }
+      .side-right {
+        background: linear-gradient(225deg, rgba(61, 214, 140, 0.1) 0%, transparent 55%),
+          linear-gradient(270deg, rgba(18, 25, 34, 0.97) 0%, rgba(12, 16, 21, 0.4) 100%);
+        border-left: 1px solid var(--line);
+      }
+      .side-photo {
+        width: 100%;
+        max-width: 240px;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 2px solid var(--line);
+        box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
+        flex-shrink: 0;
+      }
+      .side-photo img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+      }
+      .side-art {
+        width: 100%;
+        max-width: 200px;
+        opacity: 0.92;
+        flex-shrink: 0;
+      }
+      .side-art svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .side-note {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--gold);
+        text-align: center;
+        max-width: 13rem;
+        line-height: 1.35;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+      .side-deco {
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+        align-items: center;
+        padding-top: 1.5rem;
+      }
+      .side-deco span {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        opacity: 0.35;
+      }
+      .side-deco span:nth-child(2) {
+        background: var(--gold);
+        opacity: 0.45;
+      }
+      .side-deco span:nth-child(3) {
+        background: var(--yes);
+        opacity: 0.4;
+      }
       .wrap {
-        max-width: 38rem;
+        max-width: 42rem;
         margin: 0 auto;
         padding: 1.35rem 1rem 2.75rem;
+        width: 100%;
+      }
+      /* Pe ecran mic: coloanele laterale dispar — le înlocuim cu banda de poze de mai jos */
+      @media (max-width: 720px) {
+        .page-shell {
+          grid-template-columns: 1fr;
+        }
+        .side {
+          display: none;
+        }
+      }
+      .mobile-strip {
+        display: none;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.55rem;
+        margin-bottom: 1.25rem;
+      }
+      @media (max-width: 720px) {
+        .mobile-strip {
+          display: grid;
+        }
+      }
+      .mobile-strip figure {
+        margin: 0;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 2px solid var(--line);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      }
+      .mobile-strip img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+      }
+      .mobile-strip figcaption {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--gold);
+        text-align: center;
+        padding: 0.4rem 0.25rem 0;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .stat-bar {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+      @media (max-width: 400px) {
+        .stat-bar {
+          grid-template-columns: 1fr;
+        }
+      }
+      .stat-bar > div {
+        background: linear-gradient(135deg, #1e2a38, var(--box));
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        padding: 0.75rem 0.5rem;
+        text-align: center;
+      }
+      .stat-bar strong {
+        display: block;
+        font-size: 1.65rem;
+        color: var(--yes);
+        line-height: 1.1;
+      }
+      .stat-bar span {
+        display: block;
+        font-size: 0.82rem;
+        color: var(--soft);
+        font-weight: 600;
+        margin-top: 0.25rem;
+        line-height: 1.25;
+      }
+      .promise {
+        background: rgba(232, 197, 71, 0.12);
+        border: 2px solid rgba(232, 197, 71, 0.35);
+        border-radius: 14px;
+        padding: 0.9rem 1rem;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        font-size: 1.02rem;
+        color: var(--text);
+        text-align: center;
+        line-height: 1.35;
+      }
+      .tiles {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+      @media (max-width: 380px) {
+        .tiles {
+          grid-template-columns: 1fr;
+        }
+      }
+      .tile {
+        background: var(--box);
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        padding: 0.7rem 0.65rem;
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--soft);
+        line-height: 1.3;
+      }
+      .tile span {
+        display: block;
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+      }
+      .faq {
+        margin-bottom: 1.5rem;
+      }
+      .faq-item {
+        background: var(--box);
+        border: 2px solid var(--line);
+        border-radius: 12px;
+        padding: 0.75rem 0.85rem;
+        margin-bottom: 0.5rem;
+      }
+      .faq-q {
+        font-weight: 700;
+        color: var(--gold);
+        font-size: 0.95rem;
+        margin: 0 0 0.35rem;
+      }
+      .faq-a {
+        margin: 0;
+        color: var(--soft);
+        font-size: 0.92rem;
+        font-weight: 600;
+        line-height: 1.4;
       }
       .hero {
         background: linear-gradient(145deg, var(--box2), var(--box));
@@ -323,7 +546,35 @@
     </style>
   </head>
   <body>
-    <div class="wrap">
+    <div class="page-shell">
+      <aside class="side side-left" aria-hidden="true">
+        <p class="side-note">Comunitate &amp; încredere</p>
+        <figure class="side-photo">
+          <img
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=640&amp;q=75"
+            alt=""
+            width="640"
+            height="800"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <div class="side-art" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" fill="none">
+            <rect x="20" y="140" width="160" height="8" rx="2" fill="#2d3f55" />
+            <path d="M40 140V90h120v50" stroke="#e8c547" stroke-width="3" fill="none" />
+            <path d="M55 90 L100 55 L145 90Z" fill="#1a2430" stroke="#e8c547" stroke-width="2" />
+            <rect x="70" y="95" width="24" height="28" rx="2" fill="#4a9eff" opacity="0.35" />
+            <rect x="106" y="95" width="24" height="28" rx="2" fill="#3dd68c" opacity="0.35" />
+            <circle cx="100" cy="38" r="14" fill="#e8c547" opacity="0.9" />
+            <path d="M30 118h140" stroke="#2d3f55" stroke-width="2" stroke-dasharray="6 6" />
+            <text x="100" y="205" text-anchor="middle" fill="#a8b8ca" font-size="11" font-family="DM Sans, sans-serif" font-weight="700">AFACERE ÎN COMUNITATE</text>
+          </svg>
+        </div>
+        <div class="side-deco"><span></span><span></span><span></span></div>
+      </aside>
+
+      <div class="wrap">
       <div class="hero">
         <h1>Ajutor ca să-ți pornești sau să-ți crești afacerea</h1>
         <p class="sub">Pentru oameni din comunități Roma — România</p>
@@ -331,8 +582,39 @@
           <span class="badge">Limba română</span>
           <span class="badge">Pas cu pas</span>
           <span class="badge">În comunitate</span>
+          <span class="badge">REDI + Patria</span>
         </div>
       </div>
+
+      <div class="mobile-strip" aria-hidden="true">
+        <figure>
+          <img
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=400&amp;q=75"
+            alt=""
+            width="400"
+            height="400"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Împreună</figcaption>
+        </figure>
+        <figure>
+          <img
+            src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&amp;fit=crop&amp;w=400&amp;q=75"
+            alt=""
+            width="400"
+            height="400"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Afacerea ta</figcaption>
+        </figure>
+      </div>
+
+      <p class="promise">
+        Sună sau scrie — îți răspundem pe înțeles. Nu te judecăm. Poți întreba
+        fără obligație.
+      </p>
 
       <div class="quick">
         <div class="q">
@@ -346,6 +628,21 @@
         <div class="q">
           <strong>Cum încep?</strong>
           <span>Sună sau scrie — îți spunem ce urmează, fără presiune</span>
+        </div>
+      </div>
+
+      <div class="stat-bar" aria-label="Numere program">
+        <div>
+          <strong>600</strong>
+          <span>locuri în tot programul</span>
+        </div>
+        <div>
+          <strong>275</strong>
+          <span>pentru început / afacere la negru</span>
+        </div>
+        <div>
+          <strong>325</strong>
+          <span>pentru afaceri care vor să crească</span>
         </div>
       </div>
 
@@ -400,6 +697,30 @@
         <li>Legături spre cumpărători / piețe</li>
       </ul>
 
+      <h2>Pe scurt, la ce te ajută</h2>
+      <div class="tiles">
+        <div class="tile"><span>📋</span>Acte și înregistrare — explicate simplu</div>
+        <div class="tile"><span>💡</span>Idei de produs și clienți</div>
+        <div class="tile"><span>📱</span>Telefon, mesaje, vânzări pe net</div>
+        <div class="tile"><span>🤝</span>Vorbim cu tine, nu peste tine</div>
+      </div>
+
+      <h2>Întrebări des întâlnite</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <p class="faq-q">Nu am multă școală. Pot totuși?</p>
+          <p class="faq-a">Da. Explicăm pe limba ta, fără cuvinte grele.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Costă ceva dacă doar întreb?</p>
+          <p class="faq-a">Nu. Poți suna sau scrie să vezi dacă ți se potrivește.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-q">Unde se întâmplă programul?</p>
+          <p class="faq-a">În România. REDI vine și în comunitate; sediul e în București.</p>
+        </div>
+      </div>
+
       <h2>Cine te sprijină</h2>
       <div class="partners" aria-label="Parteneri">
         <span>REDI — în comunitate, lângă tine</span>
@@ -444,6 +765,36 @@
         Nu trebuie multe studii — important e să vrei să muncești cinstit. Dacă
         nu ești sigur, sună: îți explicăm pe înțeles, fără grabă.
       </p>
+      </div>
+
+      <aside class="side side-right" aria-hidden="true">
+        <p class="side-note">Creștere &amp; vânzări</p>
+        <figure class="side-photo">
+          <img
+            src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&amp;fit=crop&amp;w=640&amp;q=75"
+            alt=""
+            width="640"
+            height="800"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <div class="side-art" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" fill="none">
+            <path d="M100 175V85" stroke="#2d3f55" stroke-width="3" />
+            <path d="M100 85 L55 130" stroke="#e8c547" stroke-width="3" />
+            <path d="M100 85 L145 130" stroke="#e8c547" stroke-width="3" />
+            <circle cx="100" cy="72" r="22" fill="#1a2430" stroke="#3dd68c" stroke-width="3" />
+            <path d="M92 72 L98 78 L112 64" stroke="#3dd68c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            <rect x="38" y="150" width="124" height="14" rx="4" fill="#1e2a38" stroke="#4a9eff" stroke-width="2" />
+            <path d="M50 157h28M78 157h28M106 157h28" stroke="#4a9eff" stroke-width="2" opacity="0.5" />
+            <circle cx="52" cy="132" r="6" fill="#e8c547" opacity="0.85" />
+            <circle cx="148" cy="118" r="5" fill="#3dd68c" opacity="0.7" />
+            <text x="100" y="205" text-anchor="middle" fill="#a8b8ca" font-size="11" font-family="DM Sans, sans-serif" font-weight="700">PAS CU PAS, MAI DEPARTE</text>
+          </svg>
+        </div>
+        <div class="side-deco"><span></span><span></span><span></span></div>
+      </aside>
     </div>
   </body>
 </html>
