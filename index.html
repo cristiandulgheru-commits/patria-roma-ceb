@@ -1,387 +1,449 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Roma communities programme — PATRIA &amp; REDI</title>
+    <title>Ajutor pentru afaceri — comunități Roma</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
-        --bg: #0f1419;
-        --surface: #1a222d;
-        --border: #2d3a4a;
-        --text: #e8edf4;
-        --muted: #9aacbf;
-        --accent: #c9a227;
-        --accent-dim: #8f7320;
+        --bg: #0c1015;
+        --bg2: #121922;
+        --box: #1a2430;
+        --box2: #1e2a38;
+        --line: #2d3f55;
+        --text: #f2f6fb;
+        --soft: #a8b8ca;
+        --yes: #3dd68c;
+        --gold: #e8c547;
+        --accent: #4a9eff;
       }
-      *,
-      *::before,
-      *::after {
+      * {
         box-sizing: border-box;
       }
       body {
         margin: 0;
         font-family: "DM Sans", system-ui, sans-serif;
         background: var(--bg);
+        background-image:
+          radial-gradient(ellipse 120% 80% at 50% -20%, rgba(74, 158, 255, 0.12), transparent 55%),
+          radial-gradient(ellipse 80% 50% at 100% 50%, rgba(232, 197, 71, 0.06), transparent 45%),
+          repeating-linear-gradient(
+            -12deg,
+            transparent,
+            transparent 40px,
+            rgba(45, 63, 85, 0.12) 40px,
+            rgba(45, 63, 85, 0.12) 41px
+          );
         color: var(--text);
-        line-height: 1.65;
-        font-size: 1.02rem;
+        font-size: 1.18rem;
+        line-height: 1.45;
+        -webkit-font-smoothing: antialiased;
       }
-      .page {
-        max-width: 52rem;
+      .wrap {
+        max-width: 38rem;
         margin: 0 auto;
-        padding: clamp(1.5rem, 4vw, 3rem);
-        padding-bottom: 4rem;
+        padding: 1.35rem 1rem 2.75rem;
       }
-      .header {
-        margin-bottom: 2.5rem;
-        border-bottom: 1px solid var(--border);
-        padding-bottom: 2rem;
-      }
-      .kicker {
-        font-size: 0.85rem;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin: 0 0 0.75rem;
-        font-weight: 600;
+      .hero {
+        background: linear-gradient(145deg, var(--box2), var(--box));
+        border: 2px solid var(--line);
+        border-radius: 18px;
+        padding: 1.25rem 1.1rem 1.35rem;
+        margin-bottom: 1.35rem;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
       }
       h1 {
-        font-family: "Fraunces", Georgia, serif;
-        font-size: clamp(1.75rem, 4vw, 2.35rem);
+        font-size: 1.52rem;
+        line-height: 1.22;
+        margin: 0 0 0.45rem;
         font-weight: 700;
-        line-height: 1.2;
-        margin: 0 0 1rem;
-        color: var(--text);
+        text-wrap: balance;
       }
-      .lead {
+      .sub {
+        color: var(--soft);
+        font-size: 1.02rem;
         margin: 0;
-        color: var(--muted);
-        font-size: 1.1rem;
-        max-width: 42rem;
-      }
-      .lead strong {
-        color: var(--text);
-      }
-      section {
-        margin-bottom: 2.5rem;
-      }
-      h2 {
-        font-family: "Fraunces", Georgia, serif;
-        font-size: 1.35rem;
         font-weight: 600;
-        margin-top: 0;
-        margin-bottom: 0.75rem;
-        color: var(--text);
       }
-      p {
-        margin: 0 0 1rem;
-        color: var(--muted);
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin-top: 1rem;
       }
-      .p-muted {
-        margin: 0 0 1rem;
-        font-size: 0.95rem;
-        color: var(--muted);
+      .badge {
+        background: rgba(0, 0, 0, 0.25);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.35rem 0.75rem;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--gold);
+        letter-spacing: 0.02em;
       }
-      ul {
-        margin: 0.5rem 0 0;
-        padding-left: 1.25rem;
-        color: var(--muted);
-      }
-      li {
-        margin-bottom: 0.6rem;
-      }
-      li strong {
-        color: var(--text);
-      }
-      .cards {
+      .quick {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-        gap: 1rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
       }
-      .card {
-        background: var(--surface);
-        border: 1px solid var(--border);
+      @media (max-width: 520px) {
+        .quick {
+          grid-template-columns: 1fr;
+        }
+      }
+      .q {
+        background: var(--box);
+        border: 2px solid var(--line);
         border-radius: 12px;
-        padding: 1.25rem;
+        padding: 0.75rem 0.65rem;
+        text-align: center;
       }
-      .card-label {
+      .q strong {
         display: block;
-        font-size: 0.8rem;
-        font-weight: 600;
+        font-size: 0.78rem;
         color: var(--accent);
         text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.35rem;
+      }
+      .q span {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--soft);
+        line-height: 1.3;
+      }
+      h2 {
+        font-size: 1.02rem;
+        margin: 0 0 0.55rem;
+        color: var(--gold);
+        text-transform: uppercase;
         letter-spacing: 0.04em;
-        margin-bottom: 0.5rem;
       }
-      .card-stat {
-        display: block;
-        font-family: "Fraunces", Georgia, serif;
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: var(--text);
-        line-height: 1;
-        margin-bottom: 0.75rem;
+      .schema {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        gap: 0.45rem;
+        margin-bottom: 1.5rem;
       }
-      .card p {
-        margin: 0;
-        font-size: 0.92rem;
-      }
-      .table-wrap {
-        overflow-x: auto;
+      .step {
+        flex: 1 1 20%;
+        min-width: 4.4rem;
+        background: var(--box);
+        border: 2px solid var(--line);
         border-radius: 12px;
-        border: 1px solid var(--border);
-        background: var(--surface);
+        padding: 0.6rem 0.35rem;
+        text-align: center;
+        font-weight: 700;
+        font-size: 0.84rem;
+        line-height: 1.22;
       }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 0.88rem;
+      .step-num {
+        display: block;
+        font-size: 1.35rem;
+        color: var(--gold);
+        margin-bottom: 0.15rem;
       }
-      th,
-      td {
-        padding: 0.65rem 1rem;
-        border-bottom: 1px solid var(--border);
-        vertical-align: top;
-      }
-      th {
-        text-align: left;
-        color: var(--text);
-        font-weight: 600;
-        white-space: nowrap;
-      }
-      th.num,
-      td.num {
-        text-align: right;
-        font-variant-numeric: tabular-nums;
-      }
-      td {
-        color: var(--muted);
-      }
-      td.num {
-        color: var(--text);
-      }
-      .note {
-        color: var(--accent-dim);
-        font-size: 0.82rem;
-      }
-      tfoot td {
-        font-weight: 600;
-      }
-      tfoot td.num {
+      .arrow {
+        align-self: center;
+        color: var(--soft);
+        font-size: 1.05rem;
         font-weight: 700;
       }
-      footer {
-        margin-top: 3rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid var(--border);
+      @media (max-width: 420px) {
+        .schema {
+          flex-direction: column;
+        }
+        .arrow {
+          transform: rotate(90deg);
+          margin: -0.2rem 0;
+        }
+      }
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+        margin-bottom: 1.45rem;
+      }
+      @media (max-width: 360px) {
+        .grid2 {
+          grid-template-columns: 1fr;
+        }
+      }
+      .box {
+        background: var(--box);
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        padding: 0.95rem 0.8rem;
+      }
+      .box h3 {
+        margin: 0 0 0.35rem;
+        font-size: 1.02rem;
+        font-weight: 700;
+      }
+      .box p {
+        margin: 0;
+        color: var(--soft);
+        font-size: 0.96rem;
+        font-weight: 600;
+      }
+      .big {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--yes);
+        line-height: 1;
+        margin: 0.35rem 0 0;
+      }
+      .checks {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.45rem;
+      }
+      .checks li {
+        display: flex;
+        gap: 0.55rem;
+        align-items: flex-start;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--soft);
+        font-size: 1.02rem;
+      }
+      .checks li::before {
+        content: "✓";
+        color: var(--yes);
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .contact {
+        background: linear-gradient(160deg, #1a2a22, var(--box));
+        border: 2px solid rgba(61, 214, 140, 0.35);
+        border-radius: 16px;
+        padding: 1.15rem 1rem 1.2rem;
+        margin-bottom: 1.35rem;
+      }
+      .contact h2 {
+        margin-bottom: 0.65rem;
+        color: var(--yes);
+      }
+      .contact-name {
+        font-size: 1.12rem;
+        font-weight: 700;
+        margin: 0 0 0.85rem;
+        color: var(--text);
+      }
+      .contact-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+        margin-bottom: 0.65rem;
+        align-items: center;
+      }
+      .contact-row a {
+        color: var(--accent);
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.08rem;
+        word-break: break-word;
+      }
+      .contact-row a:hover,
+      .contact-row a:focus {
+        text-decoration: underline;
+      }
+      .contact-label {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--gold);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        min-width: 5.5rem;
+      }
+      .btn-call {
+        display: inline-block;
+        margin-top: 0.85rem;
+        background: var(--yes);
+        color: #062016;
+        font-weight: 700;
+        font-size: 1.05rem;
+        padding: 0.75rem 1.25rem;
+        border-radius: 12px;
+        text-decoration: none;
+        text-align: center;
+        width: 100%;
+        border: none;
+        cursor: pointer;
+      }
+      .btn-call:hover,
+      .btn-call:focus {
+        filter: brightness(1.08);
+      }
+      .map-link {
+        display: inline-block;
+        margin-top: 0.65rem;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--soft);
+      }
+      .map-link a {
+        color: var(--accent);
+      }
+      .partners {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+      }
+      .partners span {
+        flex: 1 1 auto;
+        min-width: 8rem;
+        background: var(--box);
+        border: 1px dashed var(--line);
+        border-radius: 10px;
+        padding: 0.55rem 0.65rem;
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: var(--soft);
+        text-align: center;
+      }
+      .footnote {
+        font-size: 0.9rem;
+        color: var(--soft);
+        font-weight: 600;
+        margin: 0;
+        padding-top: 1.1rem;
+        border-top: 1px solid var(--line);
+        line-height: 1.5;
       }
     </style>
   </head>
   <body>
-    <div class="page">
-      <header class="header">
-        <p class="kicker">Annex A — Roma communities (extract)</p>
-        <h1>Business development for Roma communities in Romania</h1>
-        <p class="lead">
-          Technical assistance aligned with the CEB blending facility: coupling
-          debt financing for vulnerable groups with business development
-          services. This page reflects only the
-          <strong>Roma community</strong> strand — PATRIA Credit &amp; REDI.
+    <div class="wrap">
+      <div class="hero">
+        <h1>Ajutor ca să-ți pornești sau să-ți crești afacerea</h1>
+        <p class="sub">Pentru oameni din comunități Roma — România</p>
+        <div class="badges" aria-label="Etichete rapide">
+          <span class="badge">Limba română</span>
+          <span class="badge">Pas cu pas</span>
+          <span class="badge">În comunitate</span>
+        </div>
+      </div>
+
+      <div class="quick">
+        <div class="q">
+          <strong>Ce e?</strong>
+          <span>Program de formare și sprijin pentru afaceri mici</span>
+        </div>
+        <div class="q">
+          <strong>Pentru cine?</strong>
+          <span>Pentru tine, dacă vrei să muncești cinstit și să crești</span>
+        </div>
+        <div class="q">
+          <strong>Cum încep?</strong>
+          <span>Sună sau scrie — îți spunem ce urmează, fără presiune</span>
+        </div>
+      </div>
+
+      <h2>Cum merge (pe scurt)</h2>
+      <div class="schema" role="list">
+        <div class="step" role="listitem">
+          <span class="step-num">1</span>
+          Vorbim<br />cu tine
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+        <div class="step" role="listitem">
+          <span class="step-num">2</span>
+          Înveți<br />pas cu pas
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+        <div class="step" role="listitem">
+          <span class="step-num">3</span>
+          Îți faci<br />afacerea „ca lumea”
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+        <div class="step" role="listitem">
+          <span class="step-num">4</span>
+          Te ajutăm<br />să vinzi mai mult
+        </div>
+      </div>
+
+      <h2>Două feluri de ajutor</h2>
+      <div class="grid2">
+        <div class="box">
+          <h3>Abia începi</h3>
+          <p>Afacere nouă sau la negru — vrei să fie legală și bună.</p>
+          <p class="big">275</p>
+          <p style="margin: 0.25rem 0 0; color: var(--text); font-size: 0.93rem">
+            locuri pentru oameni ca tine
+          </p>
+        </div>
+        <div class="box">
+          <h3>Ai deja afacere</h3>
+          <p>Vrei calitate, clienți noi, vânzări mai mari.</p>
+          <p class="big">325</p>
+          <p style="margin: 0.25rem 0 0; color: var(--text); font-size: 0.93rem">
+            locuri pentru afaceri ca a ta
+          </p>
+        </div>
+      </div>
+
+      <h2>Primești</h2>
+      <ul class="checks">
+        <li>Lecții ușor de înțeles</li>
+        <li>Omul care te ghidează (antrenor)</li>
+        <li>Ajutor cu telefon și vânzări online</li>
+        <li>Legături spre cumpărători / piețe</li>
+      </ul>
+
+      <h2>Cine te sprijină</h2>
+      <div class="partners" aria-label="Parteneri">
+        <span>REDI — în comunitate, lângă tine</span>
+        <span>Patria Credit — împrumut mic, dacă ai nevoie</span>
+      </div>
+      <div class="box">
+        <p style="margin: 0; color: var(--text); font-size: 1.02rem">
+          <strong>REDI</strong> te cheamă, te învață și stă alături. Patria te poate
+          ajuta cu finanțare pentru afacere, când e cazul.
         </p>
-      </header>
+      </div>
 
-      <main>
-        <section>
-          <h2>Why Roma communities are in focus</h2>
-          <p>
-            Within Romania, Roma communities face limited access to resources
-            and opportunities, including for entrepreneurship. Many people have
-            had limited educational opportunities and struggle to develop
-            viable, scalable businesses. Enterprises often operate in the
-            informal economy and may not meet formalisation requirements.
-            Systematic discrimination and lack of appropriate microfinance and
-            mentoring further constrain success.
-          </p>
-        </section>
+      <div class="contact" id="contact">
+        <h2>Contact — persoană de legătură</h2>
+        <p class="contact-name">Cristian Dulgheru</p>
+        <div class="contact-row">
+          <span class="contact-label">Telefon</span>
+          <a href="tel:+40770907540">0770 907 540</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">Email</span>
+          <a href="mailto:cristian.dulgheru@redi-ngo.eu">cristian.dulgheru@redi-ngo.eu</a>
+        </div>
+        <div class="contact-row" style="margin-bottom: 0; align-items: flex-start">
+          <span class="contact-label">Sediul REDI</span>
+          <span style="font-weight: 600; color: var(--soft); max-width: 16rem">
+            Strada Locotenent Săchelarie Vișarion, București, România
+          </span>
+        </div>
+        <a class="btn-call" href="tel:+40770907540">Sună acum — 0770 907 540</a>
+        <p class="map-link">
+          <a
+            href="https://www.google.com/maps/search/?api=1&amp;query=Strada+Locotenent+S%C4%83chelarie+Vi%C8%99arion%2C+Bucure%C8%99ti"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Deschide adresa în hartă (Google Maps)</a
+          >
+        </p>
+      </div>
 
-        <section>
-          <h2>Activity Group A — Roma businesses</h2>
-          <p>
-            <strong style="color: var(--text)">Activity Group A</strong> covers
-            businesses based in Roma communities, with two sub-segments:
-            start-up and informal businesses, and established businesses with
-            the potential to scale.
-          </p>
-          <ul>
-            <li>
-              <strong>Start-up / informal:</strong> entrepreneurs need
-              clarity on formalisation, sound business models, quality and
-              consistent products, and identifiable market opportunities —
-              including digital channels.
-            </li>
-            <li>
-              <strong>Growth-oriented firms:</strong> training and coaching on
-              standards, regulations and certifications; links with larger
-              buyers and partners; market access strategies; practical growth
-              skills. Includes <em>Roma Digital boost</em> (e-commerce).
-            </li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Programme targets (beneficiaries)</h2>
-          <div class="cards">
-            <div class="card">
-              <span class="card-label">Group A — start-up / informal</span>
-              <span class="card-stat">275</span>
-              <p>
-                Aspiring entrepreneurs and informal businesses supported to
-                formally establish a business from a viable idea.
-              </p>
-            </div>
-            <div class="card">
-              <span class="card-label"
-                >Group A — existing businesses with growth potential</span
-              >
-              <span class="card-stat">325</span>
-              <p>
-                Established businesses supported on growth strategy, quality /
-                certification, and new markets.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h2>How delivery is organised</h2>
-          <p>
-            <strong style="color: var(--text)">REDI</strong> coordinates
-            activities for participants from Roma communities, including
-            outreach, culturally sensitive approaches, and the
-            <strong>Roma Team coordinator</strong> role (community leaders,
-            workshops, feedback).
-            <strong style="color: var(--text)">Patria Credit</strong>
-            coordinates smallholder-farmer strands. Capacity building covers
-            module development and quality delivery; field-based support is
-            emphasised alongside trust-building where needed.
-          </p>
-        </section>
-
-        <section>
-          <h2>
-            Estimated technical assistance budget — Activity Group A (Roma)
-          </h2>
-          <p class="p-muted">
-            Figures from the project estimated budget workbook (<em
-              >ACTIVITY GROUP A</em
-            >
-            only). Year&nbsp;1 columns shown; spreadsheet subtotal for Activity
-            Group A:
-            <strong style="color: var(--text)">€391,625</strong>.
-          </p>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Activity</th>
-                  <th>Unit</th>
-                  <th class="num"># units (Y1)</th>
-                  <th class="num">Unit (EUR)</th>
-                  <th class="num">Total (EUR)</th>
-                  <th>Note</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    A.1.1 Business start-up / informal businesses — training
-                    costs
-                  </td>
-                  <td>beneficiary</td>
-                  <td class="num">75</td>
-                  <td class="num">375</td>
-                  <td class="num">28,125</td>
-                  <td class="note">25/grupă</td>
-                </tr>
-                <tr>
-                  <td>
-                    A.1.2 Business start-up / informal businesses — coaching
-                    activities
-                  </td>
-                  <td>beneficiary</td>
-                  <td class="num">200</td>
-                  <td class="num">380</td>
-                  <td class="num">76,000</td>
-                  <td class="note">5h fiecare</td>
-                </tr>
-                <tr>
-                  <td>
-                    A.1.3 Supporting start-up / informal — access to markets
-                  </td>
-                  <td>beneficiary</td>
-                  <td class="num">25</td>
-                  <td class="num">1,500</td>
-                  <td class="num">37,500</td>
-                  <td class="note">descriere suport</td>
-                </tr>
-                <tr>
-                  <td>
-                    A.2.1 Existing businesses with scale potential — training
-                    costs
-                  </td>
-                  <td>beneficiary</td>
-                  <td class="num">75</td>
-                  <td class="num">500</td>
-                  <td class="num">37,500</td>
-                  <td class="note">25/grupă</td>
-                </tr>
-                <tr>
-                  <td>
-                    A.2.2 Existing businesses with scale potential — coaching
-                    activities
-                  </td>
-                  <td>beneficiary</td>
-                  <td class="num">250</td>
-                  <td class="num">550</td>
-                  <td class="num">137,500</td>
-                  <td class="note">5h fiecare</td>
-                </tr>
-                <tr>
-                  <td>A.2.3 Supporting access to markets</td>
-                  <td>beneficiary</td>
-                  <td class="num">50</td>
-                  <td class="num">1,500</td>
-                  <td class="num">75,000</td>
-                  <td class="note">descriere suport</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colspan="4" style="text-align: right">
-                    Sum of line totals above (Y1 columns)
-                  </td>
-                  <td class="num">391,625</td>
-                  <td></td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-        </section>
-
-        <footer>
-          <p class="p-muted">
-            Source materials: PATRIA-REDI Annex A application form (MC_2) and
-            estimated budget workbook — Roma / Activity Group A portions only.
-          </p>
-        </footer>
-      </main>
+      <p class="footnote">
+        Nu trebuie multe studii — important e să vrei să muncești cinstit. Dacă
+        nu ești sigur, sună: îți explicăm pe înțeles, fără grabă.
+      </p>
     </div>
   </body>
 </html>
